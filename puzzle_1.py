@@ -20,19 +20,27 @@ Of course, your expense report is much larger. Find the two entries that sum to 
 
 #can there be negatives? floating points?
 
-def find_to_elements_that_sum_up_to_n(elements, sum):
+def find_two_elements_that_sum_up_to_n(elements, sum):
   delta_map = {}
   for i in range(len(elements)):
     current_number = elements[i]
     missing_delta = sum - current_number
+    print(missing_delta)
     if missing_delta in delta_map:
-      matching_number = delta_map[missing_delta]
-      return matching_number * current_number
+      return missing_delta * current_number
+    delta_map[current_number] = i
+    print(delta_map)
       
   return None
   
-print("Hola")
-elements = []
-print(find_to_elements_that_sum_up_to_n(elements, 2020)
-    
-  
+
+elements = [
+  1721,
+  979,
+  366,
+  299,
+  675,
+  1456
+]
+
+print(find_to_elements_that_sum_up_to_n(elements, 2020))
