@@ -81,6 +81,8 @@ def find_my_seat():
     
     return None
 
+    #ay better solution thatn O(N + NlogN???) 
+
 print(find_my_seat())
 
 
