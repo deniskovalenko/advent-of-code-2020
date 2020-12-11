@@ -131,3 +131,4 @@ dmypy.json
 
 #Java staff
 *.class
+.vscode
