@@ -8,6 +8,8 @@ for i in range(len(seating)):
 print(len(seating))
 print(len(seating[0]))
 
+
+#Part 1
 def count_occupied_adjacent_seats(seating_state, row, column):
     row_count = len(seating_state)
     column_count = len(seating_state[0])
@@ -25,44 +27,11 @@ def count_occupied_adjacent_seats(seating_state, row, column):
 
     return occupied_count
 
-#to see first seat in the direction
-def count_occupied_adjacent_seats_2(seating_state, row, column):
-    row_count = len(seating_state)
-    column_count = len(seating_state[0])
-    occupied_count = 0
-
-    for direction in [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]:
-        r = row
-        c = column
-        searching = True
-        while searching:
-            r += direction[0]
-            c += direction[1]
-            if r < 0 or r > row_count - 1 or c < 0 or c > column_count - 1:
-                searching = False
-                break
-            place = seating_state[r][c]
-            if place == '#':
-                occupied_count += 1
-                searching = False
-            if place == 'L':
-                searching = False
-                break
-
-    return occupied_count
-
-
-# assert count_occupied_adjacent_seats_2(seating, 3, 3) == 0
-# assert count_occupied_adjacent_seats_2(seating, 1, 2) == 6
-
 example = [['#', '.', '#'],
            ['#', '#', '#'],
            ['#', '.', '#']]
 
-r = count_occupied_adjacent_seats(example, 1, 1) 
-print(r)
-assert r == 6
-
+assert count_occupied_adjacent_seats(example, 1, 1) == 6
 
 
 def iterate_through_seating(initial_seating):
@@ -71,8 +40,8 @@ def iterate_through_seating(initial_seating):
     count_of_updates = -1
 
     print("Let's start")
-    for l in current_seating:
-            print(l)
+    # for l in current_seating:
+    #         print(l)
 
     while count_of_updates != 0:
         count_of_updates = 0
@@ -112,7 +81,33 @@ def iterate_through_seating(initial_seating):
     return count_of_occupied
 
 
+#PART 2
 
+#to see first seat in the direction
+def count_occupied_adjacent_seats_2(seating_state, row, column):
+    row_count = len(seating_state)
+    column_count = len(seating_state[0])
+    occupied_count = 0
+
+    for direction in [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]:
+        r = row
+        c = column
+        searching = True
+        while searching:
+            r += direction[0]
+            c += direction[1]
+            if r < 0 or r > row_count - 1 or c < 0 or c > column_count - 1:
+                searching = False
+                break
+            place = seating_state[r][c]
+            if place == '#':
+                occupied_count += 1
+                searching = False
+            if place == 'L':
+                searching = False
+                break
+
+    return occupied_count
 
 def iterate_through_seating_part_2(initial_seating):
     
@@ -120,8 +115,8 @@ def iterate_through_seating_part_2(initial_seating):
     count_of_updates = -1
 
     print("Let's start")
-    for l in current_seating:
-            print(l)
+    # for l in current_seating:
+    #         print(l)
 
     while count_of_updates != 0:
         count_of_updates = 0
@@ -146,10 +141,6 @@ def iterate_through_seating_part_2(initial_seating):
                     count_of_updates +=1
                     continue
         current_seating = copy.deepcopy(new_seating)
-        # print("\n")
-        # for l in current_seating:
-        #     print(l)
-        # print("\n")
 
     print("reached stable state")
     count_of_occupied = 0
@@ -161,10 +152,6 @@ def iterate_through_seating_part_2(initial_seating):
     return count_of_occupied
 
 
-
-
-# assert count_occupied_adjacent_seats(seating, 0, 0) == 0
-# assert count_occupied_adjacent_seats(seating, len(seating), 0) == 0
 
 print(iterate_through_seating_part_2(seating))
 """
